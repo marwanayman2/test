@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Love</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="love">
+			<h2>DO u <span>bttnak</span></h2>
+			<button id="noButton" class="button">No</button>
+			<a id="yes" href="yes.html" class="button">Yes</a>
+		</div>
+	</div>
+	
+<script>
+	const noButton = document.getElementById("noButton");
+	let isMoving = false; // Track if the button is currently moving
+
+	const moveButton = () => {
+		if (!isMoving) {
+			isMoving = true; // Set moving state to true
+			noButton.style.position = "absolute"; 
+			const x = Math.floor(Math.random() * (window.innerWidth - noButton.clientWidth));
+			const y = Math.floor(Math.random() * (window.innerHeight - noButton.clientHeight));
+			noButton.style.left = x + "px";
+			noButton.style.top = y + "px";
+
+			// Cooldown period before the button can move again
+			setTimeout(() => {
+				isMoving = false; // Allow moving again after cooldown
+			}, 500); // Adjust the timeout duration as needed (500ms)
+		}
+	};
+
+	noButton.addEventListener("mouseover", moveButton); // Move on mouseover
+	noButton.addEventListener("click", moveButton); // Move on click
+</script>
+
+
+
+</body>
+</html>
